@@ -1,0 +1,35 @@
+CREATE TABLE Students (
+
+    StudentID INT PRIMARY KEY,
+
+    FirstName VARCHAR(100),
+
+    LastName VARCHAR(100),
+
+    Age INT
+
+);
+
+
+INSERT INTO Students (
+    StudentID,
+    FirstName,
+    LastName,
+    Age
+)
+VALUES
+(1, 'Shafi', 'Vilayil', 23),
+(2, 'Rahul', 'Kumar', 21),
+(3, 'Anjali', 'Nair', 22);
+
+
+SELECT * FROM Students;
+
+
+UPDATE Students
+SET Age = 22
+WHERE StudentID = 2;
+
+
+DELETE FROM Students
+WHERE StudentID = 3;
