@@ -1,0 +1,137 @@
+use sql_task
+--Create Authors Table
+CREATE TABLE Authors (
+
+    AuthorId INT PRIMARY KEY,
+
+    AuthorName VARCHAR(255),
+
+    Country VARCHAR(100)
+
+);
+
+
+CREATE TABLE Books (
+    BookId INT PRIMARY KEY,
+    Title VARCHAR(255),
+    Price DECIMAL(10,2),
+    AuthorId INT,
+
+    FOREIGN KEY (AuthorId) REFERENCES Authors(AuthorId)
+);
+
+
+INSERT INTO Authors (AuthorId, AuthorName, Country)
+
+VALUES
+
+(1, 'Robert C. Martin', 'USA'),
+
+(2, 'Andrew Hunt', 'USA'),
+
+(3, 'Martin Fowler', 'UK');
+
+
+CREATE TABLE Books (
+    BookId INT PRIMARY KEY,
+    Title VARCHAR(255),
+    Price DECIMAL(10,2),
+    AuthorId INT,
+
+    FOREIGN KEY (AuthorId) REFERENCES Authors(AuthorId)
+);
+
+ALTER TABLE Books
+ADD AuthorId INT;
+
+CREATE VIEW View_BookAuthorDetails
+AS
+SELECT
+    b.BookId,
+    b.Title,
+    b.Price,
+    a.AuthorId,
+    a.AuthorName,
+    a.Country
+FROM Books b
+INNER JOIN Authors a
+ON b.AuthorId = a.AuthorId;
+
+ALTER TABLE Books
+ADD CONSTRAINT FK_Books_Authors
+FOREIGN KEY (AuthorId)
+REFERENCES Authors(AuthorId);
+
+
+UPDATE Books
+SET AuthorId = 1
+WHERE Author = 'Robert C. Martin';
+
+UPDATE Books
+SET AuthorId = 2
+WHERE Author = 'Andrew Hunt';
+
+UPDATE Books
+SET AuthorId = 3
+WHERE Author = 'Martin Fowler';
+
+
+
+CREATE VIEW View_BookAuthorDetails
+AS
+SELECT
+    b.BookId,
+    b.Title,
+    b.Price,
+    a.AuthorId,
+    a.AuthorName,
+    a.Country
+FROM Books b
+INNER JOIN Authors a
+ON b.AuthorId = a.AuthorId;
+
+
+ALTER VIEW View_BookAuthorDetails
+AS
+SELECT
+    b.BookId,
+    b.Title,
+    b.Price,
+    a.AuthorId,
+    a.AuthorName,
+    a.Country
+FROM Books b
+INNER JOIN Authors a
+ON b.AuthorId = a.AuthorId;
+
+
+
+CREATE VIEW View_BookAuthorDetails
+AS
+SELECT
+    b.BookId,
+    b.Title,
+    b.Price,
+    a.AuthorId,
+    a.AuthorName,
+    a.Country
+FROM Books b
+INNER JOIN Authors a
+ON b.AuthorId = a.AuthorId;
+
+
+ALTER VIEW View_BookAuthorDetails
+AS
+SELECT
+    b.BookId,
+    b.Title,
+    b.Price,
+    a.AuthorId,
+    a.AuthorName,
+    a.Country
+FROM Books b
+INNER JOIN Authors a
+ON b.AuthorId = a.AuthorId;
+
+
+SELECT * FROM View_BookAuthorDetails;
